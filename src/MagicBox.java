@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Random;
 public class MagicBox<T> {
 
     protected ArrayList objects;
     private int objCount;
     private int maxObj;
+    Random random = new Random();
 
     public MagicBox (int objAmnt) {
         objects = new ArrayList(objAmnt);
@@ -24,7 +26,8 @@ public class MagicBox<T> {
         if (objCount != maxObj) {
             throw new RuntimeException(maxObj - objCount);
         } else {
-            //TODO random
+            int randomInt = random.nextInt(maxObj);
+            return (T) objects.get(randomInt);
         }
     }
 }
